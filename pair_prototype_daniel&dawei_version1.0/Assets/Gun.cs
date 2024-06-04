@@ -6,8 +6,8 @@ public class Gun : MonoBehaviour
 {
     public GameObject bulletPrefab; // Assign the Bullet prefab in the Inspector
     public Transform shootPoint; // The point from where the bullet will be shot
-    public int bulletsLeft = 15;
-
+    public int bulletsLeft = 20;
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && (bulletsLeft > 0)) // Detect mouse click

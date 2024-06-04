@@ -4,12 +4,16 @@ using TMPro;
 
 public class BulletManager : MonoBehaviour
 {
-    public int maxBullets = 15;
+    public int maxBullets;
     private int currentBullets; 
     public TextMeshProUGUI bulletText;
+    private Gun gunScript;
+
 
     void Start()
     {
+        GameObject gun = GameObject.Find("Gun");
+        gunScript = gun.GetComponent<Gun>();
         currentBullets = maxBullets; // Initialize bullets
         UpdateBulletText(); // Update UI text on start
     }
@@ -37,6 +41,11 @@ public class BulletManager : MonoBehaviour
     public void ReloadBullets()
     {
         currentBullets = maxBullets;
+        UpdateBulletText();
+    }
+
+    void Update() {
+        currentBullets = gunScript.bulletsLeft;
         UpdateBulletText();
     }
 }
