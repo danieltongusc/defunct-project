@@ -31,18 +31,23 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-        hitCount++;
-        if (hitCount == ricochetInt)
+        if (collision.gameObject.tag != "Enemy")
         {
-            StartCoroutine(DestroyBulletAfterDelay(0.05f));
+            hitCount++;
+            // Reflect the bullet's direction when it hits something
+            Vector2 normal = collision.contacts[0].normal;
+            direction = Vector2.Reflect(direction, normal);
+            rb.velocity = direction * speed;
         }
-
-
-        // Reflect the bullet's direction when it hits something
-        Vector2 normal = collision.contacts[0].normal;
-        direction = Vector2.Reflect(direction, normal);
-        rb.velocity = direction * speed;
+        else
+        {
+            collision.gameObject.GetComponent<Enemy>().KilledEnemy();
+            rb.velocity = direction * speed;
+        }
+        if (hitCount == 3)
+        {
+            StartCoroutine(DestroyBulletAfterDelay(0.02f));
+        }
     }
     private IEnumerator DestroyBulletAfterDelay(float delay)
     {  
