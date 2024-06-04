@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     private int hitCount = 0;
     private Gun gun;
 
-    public int ricochetInt = 3;
+    public int ricochetInt = 10;
     public GameObject target;
 
     void Awake()
@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().KilledEnemy();
             rb.velocity = direction * speed;
         }
-        if (hitCount == 3)
+        if (hitCount == ricochetInt)
         {
             StartCoroutine(DestroyBulletAfterDelay(0.02f));
         }
