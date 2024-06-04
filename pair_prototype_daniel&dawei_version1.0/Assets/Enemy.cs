@@ -1,19 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public GameOverManager gameOverManager;
     void Start()
     {
-        //gameOverManager = FindObjectOfType<GameOverManager>();
 
-        // if (gameOverManager == null)
-        // {
-        //     Debug.LogError("GameOverManager not found in the scene.");
-        // }
     }
 
     // Update is called once per frame
@@ -23,5 +17,13 @@ public class Enemy : MonoBehaviour
         Debug.Log("Killed one enemy");
 
         Destroy(gameObject);
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Character")
+        {
+            Debug.Log("Hit Enemy!!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
