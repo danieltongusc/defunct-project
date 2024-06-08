@@ -1,2 +1,2 @@
-# pairedprototype
-Daniel and Dawei
+# Rush Rush Ricochet
+Pixel Perfect Studios
