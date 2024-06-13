@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     private int hitCount = 0;
     private Gun gun;
 
-    public int ricochetInt = 10;
+    public int ricochetInt = 4;
     public GameObject target;
 
     void Awake()
