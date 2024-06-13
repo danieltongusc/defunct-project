@@ -163,5 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 430994963592824730}
   speed: 50
-  ricochetInt: 8
+  ricochetInt: 5
   target: {fileID: 0}

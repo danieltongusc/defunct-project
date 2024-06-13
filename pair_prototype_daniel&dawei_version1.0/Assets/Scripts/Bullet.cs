@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag != "Enemy")
         {
             hitCount++;
+            if(collision.gameObject.tag == "ButtonEffective"){
+                collision.gameObject.GetComponent<Button>().hitButton();
+            }
             // Reflect the bullet's direction when it hits something
             Vector2 normal = collision.contacts[0].normal;
             direction = Vector2.Reflect(direction, normal);
